@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+         {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% if is_granted('ROLE_USER') %}
+            <nav class="navbar navbar-expand-md bg-dark navbar-dark ">
+                <a class="navbar-brand" href="/">Start</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/expense">Moje wydatki</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/expense/show">30 dni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/expense/search">Wyszukiwarka</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/category">Kategorie</a>
+                    </li>      
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Wyloguj</a>
+                        </li>
+                    </ul>
+                </div>  
+                
+            </nav>
+            </br>
+            
+        {% endif %}
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>

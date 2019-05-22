@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wyszukiwanie{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h1>Wyszukiwanie</h1></br>
+    <h6>Wypełnij pola by zawęzić wynik wyszukiwania</h6></br>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+        <div class="btn-block">
+            <input type="submit" class="btn btn-primary" value="Wyszukaj"/>
+            <a class="btn btn-info" href="/expense">Powrót</a>
+        </div>
+    {{ form_end(form) }}
+    
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

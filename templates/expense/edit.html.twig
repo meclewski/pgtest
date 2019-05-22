@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dodawanie/Edycja wydatku{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h1>Dodawanie/Edycja wydatków</h1></br>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="btn-block">
+        <input type="submit" class="btn btn-primary" value="Zapisz"/>
+        {% if (expense.id != null) %}
+            <a class="btn btn-danger" href="/expense/delete/{{expense.id}}">Usuń</a>
+        {% endif %}
+        <a class="btn btn-info" href="/expense">Powrót</a>
+    </div>
+    {{ form_end(form) }}
+
+    {% block javascripts %}
+        {{ parent() }}
+    {% endblock %}
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Witaj!{% endblock %}
+{% block stylesheets %}  {{ parent() }} {% endblock %}
+    
+{% block body %}
+    <h1 class="text-center">Witaj na stronie kontroli wydatków</h1>
+    </br>
+    <div class="text-center">
+    <img class="img-fluid" src="{{ asset('build/images/budget-buster.jpg') }}" title="Pig" alt="Pig">
+    
+    </br></br>
+    <div class="btn-block">
+        <a class="btn btn-primary" href="/login">Logowanie</a>
+        <a class="btn btn-primary" href="/register">Rejestracja</a>
+    </div>
+    </div>
+</div>
+
+
+{% block javascripts %}  {{ parent() }} {% endblock %}
+
+
+{% endblock %}

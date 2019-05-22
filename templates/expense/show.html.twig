@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moje wydatki{% endblock %}
+
+{% block stylesheets %}  
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+<h1>Lista wydatków</h1></br>
+    <table class="table table-data table-bordered table-hover" id="expense">
+        <thead>
+            <tr>
+                <th>Data</th>    
+                <th>Opis</th>
+                <th>Kategoria</th>
+                <th>Kwota</th>  
+                <th>Opcje</th>
+            </tr>
+        </thead> 
+        {% for e in expenses %}
+            <tr>
+                <td>{{e.date|date('Y-m-d')}}</td>
+                <td>{{e.description}}</td>
+                <td>{{e.category.name}}</td>
+                <td class="totalprice">{{e.amout}}</td>
+                <td class="text-center">
+                    <a class="btn btn-sm btn-primary" href="/expense/edit/{{e.id}}">Edytuj</a>   
+                </td>
+            </tr>
+        {% endfor %}
+        <tfoot>
+            <tr>
+                <td colspan="3"><b>Suma</b></td>
+                <td colspan="2"><b>{{sum}}</b></td>
+            </tr>
+        </tfoot>
+    </table></br>
+    <div class="btn-block">
+        <a class="btn btn-primary" href="/expense/new">Dodaj rachunek</a>
+    </div>
+    
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% endblock %}

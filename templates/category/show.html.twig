@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kategorie{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+<h1>Kategorie</h1></br>
+    
+    <table class="table table-data table-bordered table-hover" id="category">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Opcje</th>
+            </tr>
+        </thead> 
+        {% for c in category %}
+            <tr>
+                <td>{{ c.name }}</td>
+                
+                <td class="text-center">
+                    <a class="btn btn-sm btn-primary" href="/category/edit/{{ c.id }}">Edytuj</a>   
+                </td>
+            </tr>
+        {% endfor %}    
+    </table></br>
+    <div class="btn-block">
+        <a class="btn btn-primary" href="/category/new">Dodaj kategorie</a>   
+    </div>
+    
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% endblock %}
