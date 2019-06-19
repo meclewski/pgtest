@@ -38,7 +38,13 @@
                 
             </nav>
             </br>
-            
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="text-center flash-{{ label }}" style="color:red;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
         {% endif %}
         <div class="container">
             {% block body %}{% endblock %}

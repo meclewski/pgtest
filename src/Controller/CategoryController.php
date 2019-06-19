@@ -8,6 +8,7 @@ use App\Form\CategoryType;
 use App\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 
 class CategoryController extends AbstractController
 {
@@ -89,11 +90,16 @@ class CategoryController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
         //if($this->isCsrfTokenValid('delete', $expense->getId(), $request->request->get('_token'))){
+        try{
             $category->getId();
             $em = $this->getDoctrine()->getManager();
             $em->remove($category);
             $em->flush();
         //}
+        }
+        catch (ForeignKeyConstraintViolationException $e) {
+            $this->addFlash('error', "Nie można usunąć kategorii, istnieją powiązane wydatki.");
+        }
         return $this->redirectToRoute('category');
     }
 }
